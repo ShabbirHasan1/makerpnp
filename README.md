@@ -24,17 +24,17 @@ This project is work-in-progress, you can follow development using the links in 
 
 ## Project Status
 
-Development is currently focussed on the workflow side of PCB assembly. Currently, a pure-rust desktop GUI for the
-planner is being developed and is in a usable state.  Additionally, there are currently two functional cli tools,
-planner_cli and variant builder.
+Development is currently focused on the machine operations. Please see the dedicated repo here: https://github.com/MakerPnP/machine
 
-Machine operations has not been started yet, it will be started when the process/workflow concepts and tooling matures.
+In 2024/Q3 to 2025/Q2 development was focused on the workflow side of PCB assembly, UI selection and gerber files (types, parser, viewer).
+Currently, a pure-rust desktop GUI for the planner is in a usable state, but un-polished.  Additionally, there are currently two functional cli tools,
+planner_cli and variant builder and a stand-alone pure-rust gerber viewer.
 
 ## Planning
 
 A PCB assembly job generally consists of the following things:
 
-1) One or more PCBs that need populating, which may need populated on a single side or both sides.
+1) One or more PCBs that need populating, which may need populating on a single side or both sides or on rigid-flex layers.
 2) A list of placements for each EDA design variant to be populated. 
 3) A list of manufacturer + part codes for each part used in the job. (aka Bill-of-materials/BOM)
 4) One or more processes.
@@ -233,32 +233,9 @@ Here's a screenshot:
 
 ### Supported gerber features
 
-| Supported | Feature                              |
-|----------|--------------------------------------|
-| ✅        | Plot/Move/Flash (D01/D02/D03)        |
-| ✅        | Regions                              |
-| ✅        | Aperture macros (AM)                 |
-| ✅        | Macro variables                      |
-| ✅        | Macro expressions                    |
-| ✅        | Vector Line Primitive                |
-| ✅        | Center Line Primitive                |
-| ✅        | Obround Primitive                    |
-| ✅        | Rectangle Primitive                  |
-| ✅        | Concave and Convex Polygon Primitive |
-| ✅        | Outline Primitive                    |
-| ❌        | Thermal Primitive                    |
-| ✅        | Linear plotting (G01)                |
-| ❌        | Circular plotting (G02/G03)          |
-| ❌        | Exposure (Currently only additive)   |
-| ❌        | Step-repeat blocks (SR)              |
-| ❌        | Block aperture (AB)                  |
-| ❌        | File attributes (TF)                 |
-| ❌        | Aperture attributes (TA)             |
+Full details of supported gerber features are in the gerber-viewer library crate, here:
 
-The above list is likely sufficient for viewing most modern PCB gerber files, the macro support is a key feature.
-
-The list of supported features will be improved as developer time permits, if you'd like to contribute, please see the
-![contributing](#contributing) section below.
+https://github.com/MakerPnP/gerber-viewer#supported-gerber-features
 
 ### Feedback 
 
